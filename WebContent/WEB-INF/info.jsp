@@ -7,8 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Info</title>
 </head>
-<body>
-<%@ page import="java.io.*,java.util.*" %>
+<body>"WebContent/login.jsp"
+<%@ page"WebContent/info.jsp" import="java.io.*,java.util.*" %>
 
 <p>Thank you for visiting <%-- <%= session.getAttribute("username")%> --%> </p>
 <%
