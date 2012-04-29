@@ -1,0 +1,109 @@
+			//response.getWriter().println("Hello" + ' ' + usrname +  
+			//					        ", you are visitng on" +' ' + getDate());
+			
+	-----------------------------------------------------------------	
+		
+   Integer visitCount = new Integer(0);
+   String visitCountKey = new String("visitCount");
+
+   session.setAttribute(visitCountKey,  visitCount);
+   visitCount = (Integer)session.getAttribute(visitCountKey);
+   visitCount = visitCount + 1;
+   session.setAttribute(visitCountKey,  visitCount);
+   
+   Number of visits
+ <% out.print(visitCount); %><br>
+ 
+ ------------------------------------------------------
+ 
+ <%
+String usrname = (String) request.getAttribute("username");
+
+if (usrname == "") {
+	RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+	rd.forward(request, response);
+}
+else {%>
+	<p>Hello <%= session.getAttribute("username")%></p>
+	You have visited this page <%= count++ %> times
+	<%}%> 
+	
+-----------------------------------------------------
+
+
+ <!-- <a href='./'>back</a><br> -->
+ 
+-----------------------------------------------------
+
+  <%
+    response.setHeader("Cache-Control","no-store");
+    response.setHeader("Pragma","no-cache");
+    response.setDateHeader ("Expires", 0); 
+    %>
+    
+ ----------------------------------------------------
+ 
+ 		RequestDispatcher rd = request.getRequestDispatcher("./dashboard.jsp");
+		rd.forward(request, response)
+		
+-----------------------------------------------------
+
+<%!
+int count = 0;
+%>
+<%  
+if (session.getAttribute("username") != null) { %>
+<p>Hello <%= session.getAttribute("username")%></p>
+You have visited this page <%= count++ %> times;
+<%} 
+
+-----------------------------------------------------
+
+		if (usrname != "" && pswrd != "" && pswrd.equals(users.get(usrname))) {
+			storeName(request, usrname);
+			setHeader(response, usrname, cke);
+			response.sendRedirect("./welcome.jsp");
+		}
+		
+		else {
+			response.sendError(HttpServletResponse.SC_BAD_REQUEST,"Not recognized.");
+		}
+
+----------------------------------------------------
+
+			//out.println("<html>");
+			//out.println("<body>");
+			out.println("<html><body><br><br><a href='./login.jsp'>back</a></body></html>");
+			//out.println("</body>");
+			//out.println("</html>");
+			
+----------------------------------------------------
+
+		Date logout = new Date();
+		System.out.println(" You logged out at " + logout);
+		
+----------------------------------------------------------
+
+long startTime = System.currentTimeMillis();
+
+long endTime = System.currentTimeMillis();
+long elapsedTime = endTime - startTime;
+
+SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+dateFormat.setTimeZone(TimeZone.getTimeZone("EST"));
+        
+SimpleDateFormat dateFormat2 = new SimpleDateFormat("HH:mm:ss");
+dateFormat2.setTimeZone(TimeZone.getTimeZone("UTC"));
+        
+System.out.println("Start Time: " + dateFormat.format(new Date(startTime)));
+System.out.println("End Time: " + dateFormat.format(new Date(endTime)));
+System.out.println("Total Time: " + dateFormat2.format(new Date(elapsedTime)));   
+
+----------------------------------------------------------------------
+
+		//Date login = new Date();
+		//System.out.println(" You logged in at " + login);
+		//response.sendRedirect("./welcome.jsp");
+		//RequestDispatcher rd = request.getRequestDispatcher("./welcome.jsp");
+		//rd.forward(request, response);
+ 
