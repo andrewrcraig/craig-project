@@ -44,18 +44,16 @@ public class LogInServlet extends HttpServlet {
 		if (usrname != ""  && pswrd != "" && pswrd.equals(users.get(usrname))) {
 			storeName(request, usrname);
 			setHeader(response, usrname, cke);
-			//response.sendRedirect("./welcome.jsp"); HEADER isn't set using this
-			
 			Date login = new Date();
 			System.out.println(" You logged in at " + login);
+			RequestDispatcher rd = request.getRequestDispatcher("./welcome.jsp"); //BUT IS SET With this
+			rd.forward(request, response);
+			//response.sendRedirect("./welcome.jsp"); HEADER isn't set using this
 		}
 		
 		else {
 			response.sendError(HttpServletResponse.SC_BAD_REQUEST,"Not recognized.");
-		}
-		
-		RequestDispatcher rd = request.getRequestDispatcher("./welcome.jsp"); //BUT IS SET With this
-		rd.forward(request, response);
+		}	
 	}
 
 	private void setHeader(HttpServletResponse response, String usrname, Cookie[] cke) {

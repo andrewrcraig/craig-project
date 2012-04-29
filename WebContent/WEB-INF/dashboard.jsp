@@ -11,12 +11,11 @@
 <%  
 	if (session.getAttribute("username") != null) { %>
 		<p><%= session.getAttribute("username")%>'s Dashboard</p>
-<%} 
-
-else {
-	RequestDispatcher rd = request.getRequestDispatcher("./index.jsp");
-	rd.forward(request, response);
-}%>
+		<%} 
+	
+	else {
+		response.sendRedirect("./login.jsp");
+		}%>
 </center>
 </body>
 </html>

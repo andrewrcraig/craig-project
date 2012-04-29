@@ -18,14 +18,14 @@
 <br>
 
 <%  
-if (session.getAttribute("username") != null) { %>
-<p>Hello <%= session.getAttribute("username")%>.  What's next</p>
-<%} 
-
-else {
-	RequestDispatcher rd = request.getRequestDispatcher("./login.jsp");
-	rd.forward(request, response);
-}%>
+	if (session.getAttribute("username") != null) { %>
+	<p>Hello <%= session.getAttribute("username")%>.  What's next</p>
+	<%} 
+	
+	else {
+		response.sendRedirect("./login.jsp");
+	}
+%>
  <form method="POST" action="LogOutServlet">
   <input type="submit" value="Logout" id="logoutSubmit"/>
 </form>
