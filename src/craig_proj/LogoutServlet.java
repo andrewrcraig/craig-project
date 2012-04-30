@@ -1,10 +1,14 @@
 package craig_proj;
 
-
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -13,30 +17,30 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class DashBoardServlet
+ * Servlet implementation class LogOutServlet
  */
-@WebServlet("/DashBoardServlet")
-public class DashBoardServlet extends HttpServlet {
+@WebServlet("/LogoutServlet")
+public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public DashBoardServlet() {
+    public LogoutServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doBoth(request, response);
+		getLogOut(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doBoth(request, response);
+		getLogOut(request, response);
 	}
-
-	private void doBoth(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+private void getLogOut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		session.invalidate();
-		response.sendRedirect("/WEB-INF/dashboard.jsp"); //HEADER isn't set using this
-		//RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/dashboard.jsp");
-		//rd.forward(request, response);
+		response.sendRedirect("./login.jsp");
+		
+		Date logout = new Date();
+		System.out.println(" You logged out at " + logout);   
 	}
 }

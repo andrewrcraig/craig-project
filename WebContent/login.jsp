@@ -10,11 +10,11 @@
 	<center>
 		<h2>Welcome to Craig-Project CT390</h2>	
 	<hr>
-		<form style="background-color: #CCCCCC" action="LogInServlet" method="POST"><br>
+		<form style="background-color: #CCCCCC" action="LoginServlet" method="POST"><br>
 			<input type="text" name="username" id="username"/><br>
 			<input type="password" name="password" id="password"/><br>
-			<input type="submit" value="Login" id="loginSubmit"/>
-			<input type="button" value=Clear id="clear"/><br><br>
+			<input type="submit" value="Login" id="loginSubmit"/><br><br>
+			<!--  <input type="button" value=Clear id="clear"/><br><br> -->
 		</form>
 	<hr>
 	</center>

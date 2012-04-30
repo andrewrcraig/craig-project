@@ -16,6 +16,10 @@
 	else {
 		response.sendRedirect("./login.jsp");
 		}%>
+		
+	<form method="POST" action="LogoutServlet">
+	  <input type="submit" value="Logout" id="logoutSubmit"/>
+	</form>
 </center>
 </body>
 </html>
