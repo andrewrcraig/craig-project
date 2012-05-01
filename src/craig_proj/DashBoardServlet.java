@@ -38,6 +38,6 @@ public class DashBoardServlet extends HttpServlet {
 		//response.sendRedirect("/WEB-INF/dashboard.jsp"); //HEADER isn't set using this
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/dashboard.jsp");
 		rd.forward(request, response);
-		session.invalidate();
+		//session.invalidate();
 	}
 }

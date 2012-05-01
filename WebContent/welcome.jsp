@@ -15,7 +15,6 @@
 <body>
 <center>
 <h2 style="color: red;">Welcome!</h2>
-<br>
 
 <%  
 	if (session.getAttribute("username") != null) { %>
@@ -26,8 +25,11 @@
 		response.sendRedirect("./index.jsp");
 	}
 %>
-<a href="Dashboard">Dashboard</a>
-<a href="Logout">Logout</a>
+
+	<a href="./calculate.jsp" id="calculateLink">Calculate Grade</a>   | 
+	<a href="Dashboard" id="dashboardLink">Dashboard</a>   |
+	<a href="Logout" id="logoutLink">Logout</a>
+
 </center>
 </body>
 </html>
