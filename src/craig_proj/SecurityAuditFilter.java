@@ -20,18 +20,10 @@ public class SecurityAuditFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
-		String usr = request.getParameter("username");
-		String pwd = request.getParameter("password");
-
-		if (usr == "" && pwd == "") {
+		if (request.getParameter("username") == "" && request.getParameter("password")== "") {
 			System.err.println("filtering");
 			((HttpServletResponse) response).sendError(HttpServletResponse.SC_BAD_REQUEST,"Not recognized.");
 		} 
-		if (request.getAttribute("username") != null) { 
-			int count = 0;
-			System.out.println("You have visited this page " + count++ + "times");
-
-		}
 		else {
 			chain.doFilter(request, response);
 		}

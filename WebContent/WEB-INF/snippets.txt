@@ -106,4 +106,17 @@ System.out.println("Total Time: " + dateFormat2.format(new Date(elapsedTime)));
 		//response.sendRedirect("./welcome.jsp");
 		//RequestDispatcher rd = request.getRequestDispatcher("./welcome.jsp");
 		//rd.forward(request, response);
+		
+-------------------------------------------------------------------------
+
+@WebServlet(name="/DashBoardServlet", urlPatterns= {"/DashBoard"})
+
+-------------------------------------------------------------------------
+
+ <form method="POST" action="Logout">
+  <input type="submit" value="Logout" id="logoutSubmit"/>
+</form>
+ <form method="POST" action="Dashboard">
+  <input type="submit" value="Dashboard" id="dashBoard"/>
+ </form>
  

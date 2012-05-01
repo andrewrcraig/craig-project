@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class DashBoardServlet
  */
-@WebServlet("/DashBoardServlet")
+@WebServlet("/Dashboard")
 public class DashBoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -34,9 +34,10 @@ public class DashBoardServlet extends HttpServlet {
 
 	private void doBoth(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		
+		//response.sendRedirect("/WEB-INF/dashboard.jsp"); //HEADER isn't set using this
+		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/dashboard.jsp");
+		rd.forward(request, response);
 		session.invalidate();
-		response.sendRedirect("/WEB-INF/dashboard.jsp"); //HEADER isn't set using this
-		//RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/dashboard.jsp");
-		//rd.forward(request, response);
 	}
 }

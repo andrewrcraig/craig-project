@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class LogOutServlet
  */
-@WebServlet("/LogoutServlet")
+@WebServlet("/Logout")
 public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -37,10 +37,23 @@ public class LogoutServlet extends HttpServlet {
 	}
 private void getLogOut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		session.invalidate();
-		response.sendRedirect("./login.jsp");
+		response.sendRedirect("./index.jsp");
 		
 		Date logout = new Date();
-		System.out.println(" You logged out at " + logout);   
+		System.out.println(" You logged out at " + logout);
+		
+		session.invalidate();
+		/**
+		Date now = new Date();
+		Date lastLogin = (Date) request.getAttribute("login");
+		long elapsedMilliseconds = now.getTime() - lastLogin.getTime();
+		long elapsedMinutes = elapsedMilliseconds / 1000 / 60;
+		
+		System.out.println(elapsedMinutes);
+		
+		session.invalidate();
+		response.sendRedirect("./index.jsp");
+		
+		**/
 	}
 }

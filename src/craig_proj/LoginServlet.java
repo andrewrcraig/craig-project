@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.catalina.Session;
 import org.omg.CosNaming.IstringHelper;
 
-@WebServlet("/LoginServlet")
+@WebServlet("/Login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
@@ -41,7 +41,7 @@ public class LoginServlet extends HttpServlet {
 		String pswrd = request.getParameter("password");
 		Cookie[] cke = request.getCookies();
 
-		if (usrname != ""  && pswrd != "" && pswrd.equals(users.get(usrname))) {
+		if (pswrd.equals(users.get(usrname))) {
 			storeName(request, usrname);
 			setHeader(response, usrname, cke);
 			Date login = new Date();
@@ -63,7 +63,7 @@ public class LoginServlet extends HttpServlet {
 	private void storeName(HttpServletRequest request, String usrname) {
 		HttpSession session = request.getSession(true);
 		session.setAttribute("username", usrname);
-		session.getAttribute(usrname);
+		//session.getAttribute(usrname);
 	}
 
 	private java.util.Date getDate() {

@@ -23,15 +23,11 @@
 	<%} 
 	
 	else {
-		response.sendRedirect("./login.jsp");
+		response.sendRedirect("./index.jsp");
 	}
 %>
- <form method="POST" action="LogoutServlet">
-  <input type="submit" value="Logout" id="logoutSubmit"/>
-</form>
- <form method="POST" action="DashBoardServlet">
-  <input type="submit" value="Dashboard" id="dashBoard"/>
- </form>
+<a href="Dashboard">Dashboard</a>
+<a href="Logout">Logout</a>
 </center>
 </body>
 </html>
