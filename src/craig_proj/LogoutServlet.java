@@ -2,6 +2,7 @@ package craig_proj;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -49,12 +50,9 @@ private void getLogOut(HttpServletRequest request, HttpServletResponse response)
 		HttpSession session = request.getSession();
 		Date now = new Date();
 		Date lastLogin = (Date) session.getAttribute("login");
-		//Calendar cal = Calendar.getInstance();
-		short elapsed = (short) (now.getTime() - lastLogin.getTime());
-		//long elapsedMilliseconds = now.getTime() - lastLogin.getTime();
-		//long elapsedMinutes = elapsedMilliseconds / 1000 / 60;
-		
-		response.setDateHeader("X-Logged-in-Time", elapsed);
+		long elapsedMilliseconds = now.getTime() - lastLogin.getTime();
+		long elapsedMinutes = elapsedMilliseconds / 1000 / 60;
+		response.setHeader("X-Last-Login", request.getParameter("username") + ' ' + "logged in for " + elapsedMinutes + " minutes.");
 		
 		session.invalidate();
 		response.sendRedirect("./index.jsp");

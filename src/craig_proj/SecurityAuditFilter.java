@@ -11,6 +11,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
+import org.apache.catalina.Session;
+
 /**
  * Servlet Filter implementation class SecurityAuditFilter
  */
@@ -32,6 +34,10 @@ public class SecurityAuditFilter implements Filter {
 		 
           System.out.println("Login attempts for "+ usr + ", Time " + new Date().toString());
 	   }
+		/*
+		 * does user have a session, if true, when was last login.  If false, display current time
+		 */
+	
 	   else {
            chain.doFilter(request, response);
 	}
