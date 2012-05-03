@@ -1,9 +1,8 @@
 package craig_proj;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.Date;
 
-import javax.servlet.DispatcherType;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -11,32 +10,36 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletResponse;
 
-import org.apache.catalina.Session;
-
-@WebFilter(dispatcherTypes = {DispatcherType.REQUEST }, urlPatterns = { "/*" })
+/**
+ * Servlet Filter implementation class SecurityAuditFilter
+ */
+@WebFilter("/SecurityAuditFilter")
 public class SecurityAuditFilter implements Filter {
 
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+    public SecurityAuditFilter() {
+        // TODO Auto-generated constructor stub
+    }
 
-		if (request.getParameter("username") == "" && request.getParameter("password")== "") {
-			System.err.println("filtering");
-			((HttpServletResponse) response).sendError(HttpServletResponse.SC_BAD_REQUEST,"Not recognized.");
-		} 
-		else {
-			chain.doFilter(request, response);
-		}
-	}
-
-	@Override
 	public void destroy() {
-		System.out.println("filter done");
+		// TODO Auto-generated method stub
 	}
 
-	@Override
-	public void init(FilterConfig arg0) throws ServletException {
-		System.out.println("filter starting");
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+		String usr = request.getParameter("username");  
+		
+		if (request.getParameter("username") != "" && request.getParameter("password") != "") {
+		 
+          System.out.println("Login attempts for "+ usr + ", Time " + new Date().toString());
+	   }
+	   else {
+           chain.doFilter(request, response);
+	}
+		chain.doFilter(request, response);
+	}
+
+	public void init(FilterConfig fConfig) throws ServletException {
+		// TODO Auto-generated method stub
 	}
 
 }

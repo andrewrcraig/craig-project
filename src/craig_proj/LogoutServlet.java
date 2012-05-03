@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -36,6 +37,7 @@ public class LogoutServlet extends HttpServlet {
 		getLogOut(request, response);
 	}
 private void getLogOut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/**
 		HttpSession session = request.getSession();
 		response.sendRedirect("./index.jsp");
 		
@@ -43,17 +45,18 @@ private void getLogOut(HttpServletRequest request, HttpServletResponse response)
 		System.out.println(" You logged out at " + logout);
 		
 		session.invalidate();
-		/**
+		**/
+		HttpSession session = request.getSession();
 		Date now = new Date();
-		Date lastLogin = (Date) request.getAttribute("login");
-		long elapsedMilliseconds = now.getTime() - lastLogin.getTime();
-		long elapsedMinutes = elapsedMilliseconds / 1000 / 60;
+		Date lastLogin = (Date) session.getAttribute("login");
+		//Calendar cal = Calendar.getInstance();
+		short elapsed = (short) (now.getTime() - lastLogin.getTime());
+		//long elapsedMilliseconds = now.getTime() - lastLogin.getTime();
+		//long elapsedMinutes = elapsedMilliseconds / 1000 / 60;
 		
-		System.out.println(elapsedMinutes);
+		response.setDateHeader("X-Logged-in-Time", elapsed);
 		
 		session.invalidate();
 		response.sendRedirect("./index.jsp");
-		
-		**/
 	}
 }

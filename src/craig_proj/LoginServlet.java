@@ -44,8 +44,8 @@ public class LoginServlet extends HttpServlet {
 		if (pswrd.equals(users.get(usrname))) {
 			storeName(request, usrname);
 			setHeader(response, usrname, cke);
-			Date login = new Date();
-			System.out.println(" You logged in at " + login);
+			getTime(request);
+			//System.out.println(" You logged in at " + login);
 			//RequestDispatcher rd = request.getRequestDispatcher("./welcome.jsp"); //BUT IS SET With this
 			//rd.forward(request, response);
 			response.sendRedirect("./welcome.jsp"); //HEADER isn't set using this
@@ -56,6 +56,12 @@ public class LoginServlet extends HttpServlet {
 		}	
 	}
 
+	private void getTime(HttpServletRequest request) {
+		HttpSession session = request.getSession(true);
+		Date login = new Date();
+		session.setAttribute("login", login);
+	}
+
 	private void setHeader(HttpServletResponse response, String usrname, Cookie[] cke) {
 		response.setHeader("X-Last-Login", usrname + ' ' + "last visited on " + getDate());
 	}
@@ -63,7 +69,6 @@ public class LoginServlet extends HttpServlet {
 	private void storeName(HttpServletRequest request, String usrname) {
 		HttpSession session = request.getSession(true);
 		session.setAttribute("username", usrname);
-		//session.getAttribute(usrname);
 	}
 
 	private java.util.Date getDate() {
