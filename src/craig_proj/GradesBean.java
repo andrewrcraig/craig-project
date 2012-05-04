@@ -2,23 +2,9 @@ package craig_proj;
 
 public class GradesBean {
 
-	private double lab0;
-	private double lab1;
-	private double lab2;
-	private double lab3;
-	private double lab4;
-	private double lab5;
-	private double lab6;
-	private double lab7;
-	private double lab8;
-	private double midterm;
-	private double assignment1;
-	private double assignment2;
-	private double participation;
-	private double finalExam; 
-	private double quiz1;
-	private double quiz2;
-	private double quiz3;
+	private double  lab0, lab1, lab2, lab3, lab4, lab5, lab6, 
+					lab7, lab8, midterm, assignment1, assignment2, 
+					participation, finalExam, quiz1, quiz2, quiz3;
 
 	public GradesBean() {
         super();// TODO 
@@ -151,7 +137,8 @@ public class GradesBean {
 	}
 	
 	public double getOverallGrade() {
-		double total = (getQuizzesAverage() * .05 ) + (getAssignmentsAverage() * .50) + (participation * .05) + (midterm * .15) + (finalExam * .25);
+		double total = (getQuizzesAverage() * .05 ) + (getAssignmentsAverage() * .50) 
+				+ (participation * .05) + (midterm * .15) + (finalExam * .25);
 		return total;
 	}
 }
