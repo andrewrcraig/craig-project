@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ page import="craig_proj.GradesBean" %>
+    <jsp:useBean id="grades" class="craig_proj.GradesBean" scope="session"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,32 +13,54 @@
 <br><br>
 <%  
 	if (session.getAttribute("username") != null) { %>
-		<p>Hello <%= session.getAttribute("username")%></p>
+		<p>Hello <%= session.getAttribute("username")%> </p>
 		<%} 
 	
 	else {
 		response.sendRedirect("./index.jsp");
-		}%>
+		}
+		%>
+		
 		
 	<a href="./calculate.jsp" id="calculateLink">Calculate Grade</a>   | 
 	<a href="Dashboard" id="dashboardLink">Dashboard</a>   |
 	<a href="Logout" id="logoutLink">Logout</a>
 	
-<jsp:useBean id="grades" class="craig_proj.GradesBean">
+<jsp:setProperty property="*" name="grades"/>
 	<h2>Your grade is:
-	<span="overallGrade><%= grades %></span>
+	<span="overallGrade" style="color: red;"><%= (Math.round(grades.getOverallGrade() * 100) / 100) %></span>
 	</h2>
-	<h3>The breakdown is as follows</h3>
-	
+</center>
+	<h3>The breakdown is as follows:</h3>
 	<p>
 	<strong>50%</strong>
 	comes from your
 	<strong>assignments</strong> which was
-	<strong><%= grades %></strong> for
-	<strong><%= grades %></strong> points. </p>
-	
-	
-</jsp:useBean>
-</center>
+	<strong><%= Math.round(grades.getAssignmentsAverage()) %></strong> for
+	<strong><%= Math.round(grades.getAssignmentsAverage() * .50) %></strong> points. </p>
+	<p>
+	<strong>25%</strong>
+	comes from your
+	<strong>finalExam</strong> which was
+	<strong><jsp:getProperty property="finalExam" name="grades"/></strong> for
+	<strong><%= Math.round(grades.getFinalExam() * .25) %></strong> points. </p>
+	<p>
+	<strong>15%</strong>
+	comes from your
+	<strong>midterm</strong> which was
+	<strong><jsp:getProperty property="midterm" name="grades"/></strong> for
+	<strong><%= Math.round(grades.getMidterm() * .15) %></strong> points. </p>
+	<p>
+	<strong>5%</strong>
+	comes from your
+	<strong>quizes</strong> which was
+	<strong><%= Math.round(grades.getQuizzesAverage() * 10 ) %></strong> for
+	<strong><%= Math.round(grades.getQuizzesAverage() * 10) * .05  %></strong> points. </p>
+	<p>
+	<strong>5%</strong>
+	comes from your
+	<strong>participation</strong> which was
+	<strong><jsp:getProperty property="participation" name="grades"/></strong> for
+	<strong><%= Math.round(grades.getParticipation() * .05) %></strong> points. </p>
 </body>
 </html>

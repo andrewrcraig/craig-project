@@ -25,7 +25,7 @@ public class SecurityAuditFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		String usr = request.getParameter("username"); 
 		 
-          System.out.println("Login attempt:"+ usr + " on " + new Date().toString());
+          System.out.println("Login attempt:  "+ usr + " on " + new Date().toString());
          
 	      chain.doFilter(request, response);
 	}
