@@ -1,8 +1,5 @@
 package craig_proj;
 
-//import javax.ejb.LocalBean;
-//import javax.ejb.Stateless;
-
 public class GradesBean {
 
 	private Integer lab0, lab1, lab2, lab3, lab4,
@@ -12,7 +9,7 @@ public class GradesBean {
  
 	
 	public GradesBean() {
-        // TODO 
+        super();// TODO 
 	}  
 	
     private Integer getLab0() {
@@ -137,7 +134,11 @@ public class GradesBean {
 		return quizAvg;	
 	}
 	
-	public void getOverallGrade() {
-		
+	public double getOverallGrade() {
+		double assignAvg = 0;
+		double quizAvg = 0;
+		//double total = assignAvg + quizAvg;
+		double total = (assignAvg * .50) + (quizAvg * .05) + (participation * .05) + (midterm * .15) + (finalExam * .25);
+		return total;
 	}
 }

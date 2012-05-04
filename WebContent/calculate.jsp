@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import="craig_proj.GradesBean" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Calculate</title>
+<title>Form</title>
 </head>
 <body>
 <center>
@@ -23,9 +22,9 @@
 	<a href="./calculate.jsp" id="calculateLink">Calculate Grade</a>   | 
 	<a href="Dashboard" id="dashboardLink">Dashboard</a>   |
 	<a href="Logout" id="logoutLink">Logout</a>
+	
 <br><br>
-
-	<form action="GradesBean" method="POST"><br>
+	<form action="doCalc.jsp" method="POST"><br>
 		lab0 <input type="text" id="lab0"/>
 		lab1 <input type="text" id="lab1"/>
 		lab2 <input type="text" id="lab2"/><br>
@@ -45,7 +44,6 @@
 		finalExam <input type="text" id="finalExam"/><br><br>
 		<input type="submit" value="Submit" id="gradeSubmit"/><br><br>
 	</form>
-	
 </center>
 </body>
 </html>

@@ -5,39 +5,35 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Dashboard</title>
+<title>Calculate</title>
 </head>
 <body>
 <center>
 <br><br>
 <%  
 	if (session.getAttribute("username") != null) { %>
-		<p>Hello <%= session.getAttribute("username")%></p>
-		<%} 
+	<p>Hello <%= session.getAttribute("username")%></p>
+	<%} 
 	
 	else {
 		response.sendRedirect("./index.jsp");
-		}%>
-		
+	}
+%>
+
 	<a href="./calculate.jsp" id="calculateLink">Calculate Grade</a>   | 
 	<a href="Dashboard" id="dashboardLink">Dashboard</a>   |
 	<a href="Logout" id="logoutLink">Logout</a>
-	
-<jsp:useBean id="grades" class="craig_proj.GradesBean">
-	<h2>Your grade is:
-	<span="overallGrade><%= grades %></span>
-	</h2>
-	<h3>The breakdown is as follows</h3>
-	
-	<p>
-	<strong>50%</strong>
-	comes from your
-	<strong>assignments</strong> which was
-	<strong><%= grades %></strong> for
-	<strong><%= grades %></strong> points. </p>
-	
-	
+<br><br>
+	<jsp:useBean id="grades" class="craig_proj.GradesBean">
+
+<pre>
+
+You're grade has been calculated!  You earned a <%= grades.getOverallGrade()%>
+
+</pre>
+
 </jsp:useBean>
+
 </center>
 </body>
 </html>

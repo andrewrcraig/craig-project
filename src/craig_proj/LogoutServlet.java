@@ -52,7 +52,7 @@ private void getLogOut(HttpServletRequest request, HttpServletResponse response)
 		Date lastLogin = (Date) session.getAttribute("login");
 		long elapsedMilliseconds = now.getTime() - lastLogin.getTime();
 		long elapsedMinutes = elapsedMilliseconds / 1000 / 60;
-		response.setHeader("X-Last-Login", request.getParameter("username") + ' ' + "logged in for " + elapsedMinutes + " minutes.");
+		response.setHeader("X-Last-Login", elapsedMinutes + " minutes.");
 		
 		session.invalidate();
 		response.sendRedirect("./index.jsp");

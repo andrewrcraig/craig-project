@@ -32,5 +32,12 @@
   <servlet-mapping>
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/Logout</url-pattern>
+  </servlet-mapping>  <servlet>
+    <servlet-name>GradesBean</servlet-name>
+    <servlet-class>GradesBean</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GradesBean</servlet-name>
+    <url-pattern>/GradesBean</url-pattern>
   </servlet-mapping>
 </web-app>

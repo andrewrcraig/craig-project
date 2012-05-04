@@ -120,3 +120,16 @@ System.out.println("Total Time: " + dateFormat2.format(new Date(elapsedTime)));
   <input type="submit" value="Dashboard" id="dashBoard"/>
  </form>
  
+ --------------------------------------------------------------------
+ 
+ request.getParameter("username") + ' ' + "logged in for " + 
+  usrname + ' ' + "last visited on " + 
+  
+---------------------------------------------------------------------
+
+<jsp:setProperty name="username" property="*"/>
+
+--------------------------------------------------------------------
+
+ && request.getParameter("password") != "" 
+ 
