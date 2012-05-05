@@ -60,10 +60,12 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	private void setHeader(HttpServletResponse response, String usrname, Cookie[] cke) {
-		Date lastLogin = new Date();
-		getServletContext().setAttribute("lastLogin", lastLogin);
-	    getServletContext().setAttribute(usrname + "-lastLogin", new Date());
-		response.setHeader("X-Last-Login","" + lastLogin);
+		Date lastlogin = (Date)getServletContext().getAttribute(usrname + "-lastlogin");
+		if (lastlogin == null) {
+			lastlogin = new Date();		
+		}
+		getServletContext().setAttribute(usrname + "-lastlogin", lastlogin);
+		response.setHeader("X-Last-Login","" + lastlogin);
 	}
 
 	private void storeName(HttpServletRequest request, String usrname) {
