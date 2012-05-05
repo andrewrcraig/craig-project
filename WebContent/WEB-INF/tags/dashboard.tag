@@ -14,7 +14,7 @@
 	comes from your
 	<strong>finalExam</strong> which was
 	<strong><jsp:getProperty property="finalExam" name="grades"/></strong> for
-	<strong><%= Math.round(grades.getFinalExam() * .25) %></strong> points. </p>
+	<strong><%= Math.round(grades.getFinalExam() * .25 ) %></strong> points. </p>
 	<p>
 	<strong>15%</strong>
 	comes from your
@@ -26,7 +26,7 @@
 	comes from your
 	<strong>quizzes</strong> which was
 	<strong><%= Math.round(grades.getQuizzesAverage() * 10 ) %></strong> for
-	<strong><%= Math.round(grades.getQuizzesAverage() * 10) * .05  %></strong> points. </p>
+	<strong><%= Math.round(grades.getQuizzesAverage() * 10) * .05 %></strong> points. </p>
 	<p>
 	<strong>5%</strong>
 	comes from your

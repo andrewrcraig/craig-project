@@ -20,6 +20,7 @@ import org.omg.CosNaming.IstringHelper;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
+	@SuppressWarnings("rawtypes")
 	Hashtable users = new Hashtable();
 	
     public LoginServlet() {
