@@ -6,6 +6,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page session="true" %>
+<%@ taglib prefix="dc" tagdir="/WEB-INF/tags/" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,20 +17,8 @@
 <center>
 <h2 style="color: red;">Welcome!</h2>
 
-<%  
-	if (session.getAttribute("username") != null) { %>
-	<p>Hello <%= session.getAttribute("username")%>.  What's next</p>
-	<%} 
+	<dc:greeter />
 	
-	else {
-		response.sendRedirect("./index.jsp");
-	}
-%>
-
-	<a href="./calculate.jsp" id="calculateLink">Calculate Grade</a>   | 
-	<a href="Dashboard" id="dashboardLink">Dashboard</a>   |
-	<a href="Logout" id="logoutLink">Logout</a>
-
 </center>
 </body>
 </html>

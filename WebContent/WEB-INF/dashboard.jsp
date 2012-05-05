@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ page import="craig_proj.GradesBean" %>
-    <jsp:useBean id="grades" class="craig_proj.GradesBean" scope="session"/>
+    <%@ taglib prefix="dc" tagdir="/WEB-INF/tags/" %>
+    <jsp:useBean id="grades" class="craig_proj.GradesBean" scope="session" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,20 +12,8 @@
 <body>
 <center>
 <br><br>
-<%  
-	if (session.getAttribute("username") != null) { %>
-		<p>Hello <%= session.getAttribute("username")%> </p>
-		<%} 
-	
-	else {
-		response.sendRedirect("./index.jsp");
-		}
-		%>
-		
-		
-	<a href="./calculate.jsp" id="calculateLink">Calculate Grade</a>   | 
-	<a href="Dashboard" id="dashboardLink">Dashboard</a>   |
-	<a href="Logout" id="logoutLink">Logout</a>
+
+	<dc:greeter />
 	
 <jsp:setProperty property="*" name="grades"/>
 	<h2>Your grade is:
@@ -53,7 +42,7 @@
 	<p>
 	<strong>5%</strong>
 	comes from your
-	<strong>quizes</strong> which was
+	<strong>quizzes</strong> which was
 	<strong><%= Math.round(grades.getQuizzesAverage() * 10 ) %></strong> for
 	<strong><%= Math.round(grades.getQuizzesAverage() * 10) * .05  %></strong> points. </p>
 	<p>
