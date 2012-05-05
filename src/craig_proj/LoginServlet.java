@@ -45,10 +45,7 @@ public class LoginServlet extends HttpServlet {
 			storeName(request, usrname);
 			setHeader(response, usrname, cke);
 			getTime(request);
-			//System.out.println(" You logged in at " + login);
-			//RequestDispatcher rd = request.getRequestDispatcher("./welcome.jsp"); //BUT IS SET With this
-			//rd.forward(request, response);
-			response.sendRedirect("./welcome.jsp"); //HEADER isn't set using this
+			response.sendRedirect("./welcome.jsp"); 
 		}
 		
 		else {

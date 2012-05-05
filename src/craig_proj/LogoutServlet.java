@@ -37,24 +37,24 @@ public class LogoutServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		getLogOut(request, response);
 	}
-private void getLogOut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/**
-		HttpSession session = request.getSession();
-		response.sendRedirect("./index.jsp");
-		
-		Date logout = new Date();
-		System.out.println(" You logged out at " + logout);
-		
-		session.invalidate();
-		**/
-		HttpSession session = request.getSession();
-		Date now = new Date();
-		Date lastLogin = (Date) session.getAttribute("login");
-		long elapsedMilliseconds = now.getTime() - lastLogin.getTime();
-		long elapsedMinutes = elapsedMilliseconds / 1000 / 60;
-		response.setHeader("X-Last-Login", elapsedMinutes + " minutes.");
-		
-		session.invalidate();
-		response.sendRedirect("./index.jsp");
+	private void getLogOut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			/**
+			HttpSession session = request.getSession();
+			response.sendRedirect("./index.jsp");
+			
+			Date logout = new Date();
+			System.out.println(" You logged out at " + logout);
+			
+			session.invalidate();
+			**/
+			HttpSession session = request.getSession();
+			Date now = new Date();
+			Date lastLogin = (Date) session.getAttribute("login");
+			long elapsedMilliseconds = now.getTime() - lastLogin.getTime();
+			long elapsedMinutes = elapsedMilliseconds / 1000 / 60;
+			response.setHeader("X-Last-Login", elapsedMinutes + " minutes.");
+			
+			session.invalidate();
+			response.sendRedirect("./index.jsp");
+		}
 	}
-}

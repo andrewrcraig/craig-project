@@ -194,7 +194,29 @@ System.out.println("Total Time: " + dateFormat2.format(new Date(elapsedTime)));
 	You're grade has been recorded!  You earned a <%= grades.getOverallGrade() %>
 ----------------------------------------------------------------
 
-x = Math.round(x*100.0) / 100.0;	
+x = Math.round(x*100.0) / 100.0;
+
+----------------------------------------------------------------
+
+		if (pswrd.equals(users.get(usrname))) {
+				storeName(request, usrname);
+				getTime(request);
+				response.sendRedirect("./welcome.jsp"); 
+			
+			if (getServletContext().getAttribute("username") != null) {
+				setHeader(response, usrname, cke);
+			}
+			else {
+				response.setHeader("X-Last-Login","" + usrname + new Date());
+			}
+			//setHeader(response, usrname, cke);
+
+		}
+		
+		else {
+			response.sendError(HttpServletResponse.SC_BAD_REQUEST,"Not recognized.");
+		}	
+	}	
 	
 	
 	

@@ -33,7 +33,7 @@
 		quiz1 			      <input type="text" id="quiz1" name="quiz1" size=6 value="0"/>
 		quiz2 			      <input type="text" id="quiz2" name="quiz2" size=6 value="10"/>
 		quiz3 			  	  <input type="text" id="quiz3" name="quiz3" size=6 value="10"/><br>
-		assignment1 	&nbsp;<input type="text" id="assigment1" name="assignment1 "size=6 value="90"/>
+		assignment1     &nbsp;<input type="text" id="assignment1" name="assignment3" size=6 value="90"/>
 		assignment2 	&nbsp;<input type="text" id="assignment2" name="assignment2" size=6 value="100"/><br>
 		participation 	&nbsp;<input type="text" id="participation" name="participation"size=6 value="100"/>
 		midterm 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
